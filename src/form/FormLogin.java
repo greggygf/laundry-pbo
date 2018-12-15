@@ -1,6 +1,7 @@
 package form;
 
 import dao.UserDao;
+import entity.User;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,9 +39,9 @@ public class FormLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(17, 109, 233));
 
-        jPanel1.setBackground(new java.awt.Color(0, 23, 121));
+        jPanel1.setBackground(new java.awt.Color(7, 21, 83));
 
-        usernameText.setBackground(new java.awt.Color(0, 23, 121));
+        usernameText.setBackground(new java.awt.Color(7, 21, 83));
         usernameText.setForeground(new java.awt.Color(153, 255, 255));
         usernameText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 255, 255)));
         usernameText.setCaretColor(new java.awt.Color(153, 255, 255));
@@ -52,9 +53,9 @@ public class FormLogin extends javax.swing.JFrame {
         });
 
         jButton1.setBackground(new java.awt.Color(153, 255, 255));
-        jButton1.setFont(new java.awt.Font("Ebrima", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 23, 121));
-        jButton1.setText("SIGN ME IN");
+        jButton1.setFont(new java.awt.Font("Exo", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(7, 21, 83));
+        jButton1.setText("LOGIN");
         jButton1.setAlignmentY(0.0F);
         jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -63,11 +64,11 @@ public class FormLogin extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Dolce Vita Heavy", 0, 26)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lemon/Milk", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 255, 255));
         jLabel1.setText("LAUNDRY ONLINE");
 
-        passwordText.setBackground(new java.awt.Color(0, 23, 121));
+        passwordText.setBackground(new java.awt.Color(7, 21, 83));
         passwordText.setForeground(new java.awt.Color(153, 255, 255));
         passwordText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 255, 255)));
 
@@ -75,34 +76,34 @@ public class FormLogin extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 207, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(196, 196, 196)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(usernameText, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(passwordText, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(202, 202, 202))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(233, 233, 233)
+                        .addGap(168, 168, 168)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(268, 268, 268)
+                        .addGap(260, 260, 260)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(44, 44, 44)
                 .addComponent(usernameText, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(passwordText, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addGap(38, 38, 38)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -123,13 +124,14 @@ public class FormLogin extends javax.swing.JFrame {
         ManajerKoneksi.getKoneksi();
         
         UserDao ud = new UserDao();
+        User u = new User();
         
-        String ut = usernameText.getText();
-        String pt = passwordText.getText();
+        u.setUsername(usernameText.getText());
+        u.setPassword(passwordText.getText());
         
         try 
         {
-            if(ud.cekUser(ut, pt) == true)
+            if(ud.cekUser(u) == true)
             {
                 JOptionPane.showMessageDialog(this, "Yeee bener~","Mantap",JOptionPane.INFORMATION_MESSAGE);
                 
