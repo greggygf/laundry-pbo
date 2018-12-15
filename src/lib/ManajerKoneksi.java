@@ -9,7 +9,7 @@ import java.sql.SQLException;
  * @author Iwonkxx
  */
 public class ManajerKoneksi {
-    private static final String URL = "jdbc:mysql://localhost/db_laundry?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private static final String URL = "jdbc:mysql://localhost/tsql_laundry?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private static final String USER = "root";
     private static final String PASSWORD = "";
     
