@@ -1,5 +1,6 @@
 package dao;
 
+import entity.User;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,9 +16,9 @@ public class UserDao
         this.koneksi = ManajerKoneksi.getKoneksi();
     }
     
-    public boolean cekUser(String username,String password) throws SQLException
+    public boolean cekUser(User user) throws SQLException
     {
-        String sql = "SELECT * FROM user WHERE username = '" + username + "' AND password = '" + password + "'";
+        String sql = "SELECT * FROM user WHERE username = '" + user.getUsername() + "' AND password = '" + user.getPassword() + "'";
         
         Statement s = this.koneksi.createStatement();
         
