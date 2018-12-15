@@ -4,14 +4,14 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Arrays;
 import lib.ManajerKoneksi;
 
 public class UserDao 
 {
     private final Connection koneksi;
     
-    public UserDao() {
+    public UserDao() 
+    {
         this.koneksi = ManajerKoneksi.getKoneksi();
     }
     
