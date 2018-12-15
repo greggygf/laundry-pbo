@@ -4,18 +4,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- *
- * @author Iwonkxx
- */
-public class ManajerKoneksi {
+public class ManajerKoneksi 
+{
     private static final String URL = "jdbc:mysql://localhost/tsql_laundry?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private static final String USER = "root";
     private static final String PASSWORD = "";
     
     private static Connection koneksi;
     
-    public static Connection getKoneksi() {
+    public static Connection getKoneksi() 
+    {
         if(ManajerKoneksi.koneksi == null)
             ManajerKoneksi.buatKoneksi();
             
@@ -36,12 +34,15 @@ public class ManajerKoneksi {
         return null;
     }
     
-    private static void cekDriver() {
-        try {
+    private static void cekDriver() 
+    {
+        try 
+        {
             Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("Cek Driver OK.");
         }
-        catch(ClassNotFoundException ex) {
+        catch(ClassNotFoundException ex) 
+        {
             System.out.println("Cek Driver GAGAL! Errornya:");
             System.out.println(ex.getMessage());
             
