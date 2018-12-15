@@ -184,10 +184,13 @@ public class FormLogin extends javax.swing.JFrame {
 
         try
         {
-            if(ud.cekUser(u) == true)
+            if(ud.cekUser(u).equals("Admin"))
             {
-                JOptionPane.showMessageDialog(this, "Yeee bener~","Mantap",JOptionPane.INFORMATION_MESSAGE);
-
+                new FormMenuAdmin().setVisible(true);
+            }
+            else if(ud.cekUser(u).equals("Customer"))
+            {
+                new FormMenuCustomer().setVisible(true);
             }
             else
             {
