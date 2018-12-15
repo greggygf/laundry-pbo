@@ -16,7 +16,7 @@ public class UserDao
         this.koneksi = ManajerKoneksi.getKoneksi();
     }
     
-    public boolean cekUser(User user) throws SQLException
+    public String cekUser(User user) throws SQLException
     {
         String sql = "SELECT * FROM user WHERE username = '" + user.getUsername() + "' AND password = '" + user.getPassword() + "'";
         
@@ -24,20 +24,21 @@ public class UserDao
         
         ResultSet hasil = s.executeQuery(sql);
         
-        int rowCount = 0;
-        
         while(hasil.next())
         {
-            rowCount++;
+            user.setJenis_user(hasil.getString("jenis_user"));
         }
         
-        if(rowCount != 1)
+        String u = user.getJenis_user();
+        
+        switch (u) 
         {
-            return false;
-        }
-        else
-        {
-            return true;
+            case "Admin":
+                return "Admin";
+            case "Customer":
+                return "Customer";
+            default:
+                return "error";
         }
     }
 }
