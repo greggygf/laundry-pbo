@@ -24,12 +24,20 @@ public class UserDao
         
         ResultSet hasil = s.executeQuery(sql);
         
+        int rowCount = 0;
+        
         while(hasil.next())
         {
+            rowCount++;
             user.setJenis_user(hasil.getString("jenis_user"));
         }
         
         String u = user.getJenis_user();
+        
+        if(rowCount == 0)
+        {
+            return "error";
+        }
         
         switch (u) 
         {
