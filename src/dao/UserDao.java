@@ -1,13 +1,14 @@
 package dao;
 
 import entity.User;
+import interfacee.IUser;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import lib.ManajerKoneksi;
 
-public class UserDao 
+public class UserDao implements IUser
 {
     private final Connection koneksi;
     
@@ -16,6 +17,7 @@ public class UserDao
         this.koneksi = ManajerKoneksi.getKoneksi();
     }
     
+    @Override
     public String cekUser(User user) throws SQLException
     {
         String sql = "SELECT * FROM user WHERE username = '" + user.getUsername() + "' AND password = '" + user.getPassword() + "'";
