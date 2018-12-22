@@ -7,7 +7,12 @@ public class Transaksi
     private int id_transaksi, id_tarif, berat,total;
     private String nama, nama_jenis_laundry, nama_jenis_pakaian;
     private Date tgl;
-
+    
+    public Transaksi()
+    {
+        
+    }
+    
     public int getId_transaksi() 
     {
         return id_transaksi;
