@@ -1,9 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package form;
+
+import dao.JenisPakaianDao;
+import entity.JenisPakaian;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import lib.ManajerKoneksi;
 
 /**
  *
@@ -34,7 +35,7 @@ public class FormAddJenisPakaian extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        usernameText2 = new javax.swing.JTextField();
+        jpText = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -74,16 +75,16 @@ public class FormAddJenisPakaian extends javax.swing.JFrame {
             }
         });
 
-        usernameText2.setBackground(new java.awt.Color(204, 204, 204));
-        usernameText2.setFont(new java.awt.Font("Exo", 0, 24)); // NOI18N
-        usernameText2.setForeground(new java.awt.Color(3, 14, 62));
-        usernameText2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(3, 14, 62)));
-        usernameText2.setCaretColor(new java.awt.Color(3, 14, 62));
-        usernameText2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        usernameText2.setDisabledTextColor(new java.awt.Color(3, 14, 62));
-        usernameText2.addActionListener(new java.awt.event.ActionListener() {
+        jpText.setBackground(new java.awt.Color(204, 204, 204));
+        jpText.setFont(new java.awt.Font("Exo", 0, 24)); // NOI18N
+        jpText.setForeground(new java.awt.Color(3, 14, 62));
+        jpText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(3, 14, 62)));
+        jpText.setCaretColor(new java.awt.Color(3, 14, 62));
+        jpText.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jpText.setDisabledTextColor(new java.awt.Color(3, 14, 62));
+        jpText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameText2ActionPerformed(evt);
+                jpTextActionPerformed(evt);
             }
         });
 
@@ -97,7 +98,7 @@ public class FormAddJenisPakaian extends javax.swing.JFrame {
                         .addGap(162, 162, 162)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
-                            .addComponent(usernameText2, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jpText, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(193, 193, 193)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -111,7 +112,7 @@ public class FormAddJenisPakaian extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
-                .addComponent(usernameText2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpText, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -175,12 +176,29 @@ public class FormAddJenisPakaian extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        ManajerKoneksi.getKoneksi();
+        
+        JenisPakaian jp = new JenisPakaian();
+        
+        JenisPakaianDao jpd = new JenisPakaianDao();
+        
+        jp.setNama_jenis_pakaian(jpText.getText());
+        
+        try 
+        {
+            jpd.insert(jp);
+            JOptionPane.showMessageDialog(this, "Input Berhasil!", "Message", 
+                        JOptionPane.INFORMATION_MESSAGE);
+        } 
+        catch (SQLException ex) 
+        {
+            JOptionPane.showMessageDialog(this, "input tidak bisa dilakukan!", "Peringatan", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void usernameText2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameText2ActionPerformed
+    private void jpTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usernameText2ActionPerformed
+    }//GEN-LAST:event_jpTextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,6 +245,6 @@ public class FormAddJenisPakaian extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField usernameText2;
+    private javax.swing.JTextField jpText;
     // End of variables declaration//GEN-END:variables
 }
