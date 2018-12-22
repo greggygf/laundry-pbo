@@ -8,6 +8,7 @@ public class User
 
     public User()
     {
+        
     }
     
     public String getUsername() 
@@ -39,6 +40,4 @@ public class User
     {
         this.jenis_user = jenis_user;
     }
-    
-    
 }
