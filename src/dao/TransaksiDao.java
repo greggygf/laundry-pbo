@@ -42,7 +42,7 @@ public class TransaksiDao
             ResultSet hasil = s.executeQuery(sql);
         
             // Siapkan array kosong untuk menyimpan mahasiswa dari ResultSet
-            ArrayList<Transaksi> jpTerpilih = new ArrayList<>();
+            ArrayList<Transaksi> transaksiTerpilih = new ArrayList<>();
 
             while(hasil.next())
             {
@@ -54,10 +54,10 @@ public class TransaksiDao
                 t.setTgl(hasil.getDate("tgl"));
 
                 // Memasukkan objek m kedalam array list
-                jpTerpilih.add(jp);
+                transaksiTerpilih.add(t);
             }
             
-            return jpTerpilih;
+            return transaksiTerpilih;
         }
         catch(SQLException ex)
         {
