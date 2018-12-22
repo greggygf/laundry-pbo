@@ -7,15 +7,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import lib.ManajerKoneksi;
 
-public class JenisLaundryDao {
-
+public class JenisLaundryDao 
+{
     private final Connection koneksi;
 
-    public JenisLaundryDao() {
+    public JenisLaundryDao() 
+    {
         this.koneksi = ManajerKoneksi.getKoneksi();
     }
 
-    public int countID() throws SQLException {
+    public int countID() throws SQLException 
+    {
         String sql = "select * from jenis_laundry";
 
         Statement s = this.koneksi.createStatement();
@@ -31,7 +33,8 @@ public class JenisLaundryDao {
         return rowCount;
     }
 
-    public void insert(JenisLaundry jl) throws SQLException {
+    public void insert(JenisLaundry jl) throws SQLException 
+    {
         int id_jenis_laundry = this.countID();
         String nama_jenis_laundry = jl.getNama_jenis_laundry();
 
