@@ -3,7 +3,7 @@ package entity;
 public class Transaksi 
 {
     private int id_transaksi, id_tarif, berat,total;
-    private String nama, tgl;
+    private String nama, tgl, nama_jenis_laundry, nama_jenis_pakaian;
 
     public int getId_transaksi() 
     {
@@ -53,6 +53,26 @@ public class Transaksi
     public void setNama(String nama) 
     {
         this.nama = nama;
+    }
+
+    public String getNama_jenis_laundry() 
+    {
+        return nama_jenis_laundry;
+    }
+
+    public void setNama_jenis_laundry(String nama_jenis_laundry) 
+    {
+        this.nama_jenis_laundry = nama_jenis_laundry;
+    }
+
+    public String getNama_jenis_pakaian()
+    {
+        return nama_jenis_pakaian;
+    }
+
+    public void setNama_jenis_pakaian(String nama_jenis_pakaian) 
+    {
+        this.nama_jenis_pakaian = nama_jenis_pakaian;
     }
 
     public String getTgl() 
