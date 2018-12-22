@@ -17,6 +17,59 @@ public class TransaksiDao
         this.koneksi = ManajerKoneksi.getKoneksi();
     }
     
+    public int countID() throws SQLException 
+    {
+        String sql = "select * from transaksi";
+
+        Statement s = this.koneksi.createStatement();
+
+        ResultSet hasil = s.executeQuery(sql);
+
+        int rowCount = 1;
+
+        while (hasil.next()) {
+            rowCount++;
+        }
+
+        return rowCount;
+    }
+    
+    public int findTarif(int id_jenis_pakaian, int id_jenis_laundry) throws SQLException
+    {
+        String sql =    "select * from tarif\n" +
+                        "where id_jenis_pakaian = " + id_jenis_pakaian +
+                        "AND id_jenis_laundry = " + id_jenis_laundry;
+        
+        Statement s = this.koneksi.createStatement();
+
+        ResultSet hasil = s.executeQuery(sql);
+        
+        int idTarif = 0;
+        
+        while(hasil.next())
+        {
+            Transaksi t = new Transaksi();
+            
+            t.setId_tarif(hasil.getInt("id_tarif"));
+            idTarif = t.getId_tarif();
+        }
+        
+        return idTarif;
+    }
+    
+    public void insert(Transaksi t) throws SQLException 
+    {
+        int id_transaksi = t.getId_transaksi();
+//        int id_tarif = this.findTarif(t.);
+//        String nama_jenis_pakaian = jp.getNama_jenis_pakaian();
+//
+//        String sql = "INSERT INTO jenis_pakaian VALUES (" + id_jenis_pakaian + ",'" + nama_jenis_pakaian + "',0)";
+
+//        Statement s = this.koneksi.createStatement();
+//
+//        s.executeUpdate(sql);
+    }
+    
     public ArrayList<Transaksi> ambilSemuaData() throws SQLException
     {
         ArrayList<Transaksi> semuanya = this.selectWhere(null);
