@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import lib.ManajerKoneksi;
 
-
 public class FormAddCustomer extends javax.swing.JFrame 
 {
     public FormAddCustomer() {
