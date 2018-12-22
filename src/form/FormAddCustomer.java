@@ -5,6 +5,14 @@
  */
 package form;
 
+import dao.CustomerDao;
+import dao.JenisLaundryDao;
+import entity.Customer;
+import entity.JenisLaundry;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import lib.ManajerKoneksi;
+
 /**
  *
  * @author bluohazard
@@ -36,9 +44,9 @@ public class FormAddCustomer extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        usernameText = new javax.swing.JTextField();
-        usernameText1 = new javax.swing.JTextField();
-        usernameText2 = new javax.swing.JTextField();
+        alamatText = new javax.swing.JTextField();
+        telpText = new javax.swing.JTextField();
+        namaText = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -87,42 +95,42 @@ public class FormAddCustomer extends javax.swing.JFrame {
             }
         });
 
-        usernameText.setBackground(new java.awt.Color(204, 204, 204));
-        usernameText.setFont(new java.awt.Font("Exo", 0, 24)); // NOI18N
-        usernameText.setForeground(new java.awt.Color(3, 14, 62));
-        usernameText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(3, 14, 62)));
-        usernameText.setCaretColor(new java.awt.Color(3, 14, 62));
-        usernameText.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        usernameText.setDisabledTextColor(new java.awt.Color(3, 14, 62));
-        usernameText.addActionListener(new java.awt.event.ActionListener() {
+        alamatText.setBackground(new java.awt.Color(204, 204, 204));
+        alamatText.setFont(new java.awt.Font("Exo", 0, 24)); // NOI18N
+        alamatText.setForeground(new java.awt.Color(3, 14, 62));
+        alamatText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(3, 14, 62)));
+        alamatText.setCaretColor(new java.awt.Color(3, 14, 62));
+        alamatText.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        alamatText.setDisabledTextColor(new java.awt.Color(3, 14, 62));
+        alamatText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameTextActionPerformed(evt);
+                alamatTextActionPerformed(evt);
             }
         });
 
-        usernameText1.setBackground(new java.awt.Color(204, 204, 204));
-        usernameText1.setFont(new java.awt.Font("Exo", 0, 24)); // NOI18N
-        usernameText1.setForeground(new java.awt.Color(3, 14, 62));
-        usernameText1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(3, 14, 62)));
-        usernameText1.setCaretColor(new java.awt.Color(3, 14, 62));
-        usernameText1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        usernameText1.setDisabledTextColor(new java.awt.Color(3, 14, 62));
-        usernameText1.addActionListener(new java.awt.event.ActionListener() {
+        telpText.setBackground(new java.awt.Color(204, 204, 204));
+        telpText.setFont(new java.awt.Font("Exo", 0, 24)); // NOI18N
+        telpText.setForeground(new java.awt.Color(3, 14, 62));
+        telpText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(3, 14, 62)));
+        telpText.setCaretColor(new java.awt.Color(3, 14, 62));
+        telpText.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        telpText.setDisabledTextColor(new java.awt.Color(3, 14, 62));
+        telpText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameText1ActionPerformed(evt);
+                telpTextActionPerformed(evt);
             }
         });
 
-        usernameText2.setBackground(new java.awt.Color(204, 204, 204));
-        usernameText2.setFont(new java.awt.Font("Exo", 0, 24)); // NOI18N
-        usernameText2.setForeground(new java.awt.Color(3, 14, 62));
-        usernameText2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(3, 14, 62)));
-        usernameText2.setCaretColor(new java.awt.Color(3, 14, 62));
-        usernameText2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        usernameText2.setDisabledTextColor(new java.awt.Color(3, 14, 62));
-        usernameText2.addActionListener(new java.awt.event.ActionListener() {
+        namaText.setBackground(new java.awt.Color(204, 204, 204));
+        namaText.setFont(new java.awt.Font("Exo", 0, 24)); // NOI18N
+        namaText.setForeground(new java.awt.Color(3, 14, 62));
+        namaText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(3, 14, 62)));
+        namaText.setCaretColor(new java.awt.Color(3, 14, 62));
+        namaText.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        namaText.setDisabledTextColor(new java.awt.Color(3, 14, 62));
+        namaText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameText2ActionPerformed(evt);
+                namaTextActionPerformed(evt);
             }
         });
 
@@ -142,9 +150,9 @@ public class FormAddCustomer extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(jLabel8)
                     .addComponent(jLabel7)
-                    .addComponent(usernameText2, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
-                    .addComponent(usernameText)
-                    .addComponent(usernameText1))
+                    .addComponent(namaText, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
+                    .addComponent(alamatText)
+                    .addComponent(telpText))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -153,15 +161,15 @@ public class FormAddCustomer extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
-                .addComponent(usernameText2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(namaText, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
                 .addComponent(jLabel8)
                 .addGap(14, 14, 14)
-                .addComponent(usernameText, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(alamatText, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(usernameText1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(telpText, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -231,20 +239,39 @@ public class FormAddCustomer extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        ManajerKoneksi.getKoneksi();
+        
+        Customer c = new Customer();
+        
+        CustomerDao cd = new CustomerDao();
+        
+        c.setNama(namaText.getText());
+        c.setAlamat(alamatText.getText());
+        c.setNoTelp(telpText.getName());
+        
+        try 
+        {
+            cd.insert(c);
+            JOptionPane.showMessageDialog(this, "Input Berhasil!", "Message", 
+                        JOptionPane.INFORMATION_MESSAGE);
+        } 
+        catch (SQLException ex) 
+        {
+            JOptionPane.showMessageDialog(this, "input tidak bisa dilakukan!", "Peringatan", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void usernameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextActionPerformed
+    private void alamatTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alamatTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usernameTextActionPerformed
+    }//GEN-LAST:event_alamatTextActionPerformed
 
-    private void usernameText1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameText1ActionPerformed
+    private void telpTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telpTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usernameText1ActionPerformed
+    }//GEN-LAST:event_telpTextActionPerformed
 
-    private void usernameText2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameText2ActionPerformed
+    private void namaTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usernameText2ActionPerformed
+    }//GEN-LAST:event_namaTextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -282,6 +309,7 @@ public class FormAddCustomer extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField alamatText;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
@@ -293,8 +321,7 @@ public class FormAddCustomer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField usernameText;
-    private javax.swing.JTextField usernameText1;
-    private javax.swing.JTextField usernameText2;
+    private javax.swing.JTextField namaText;
+    private javax.swing.JTextField telpText;
     // End of variables declaration//GEN-END:variables
 }
