@@ -182,15 +182,16 @@ public class FormLogin extends javax.swing.JFrame {
         u.setUsername(usernameText.getText());
         u.setPassword(passwordText.getText());
         
-        dispose();
         try
         {
             switch (ud.cekUser(u)) {
                 case "Admin":
                     new FormMenuAdmin().setVisible(true);
+                    dispose();
                     break;
                 case "Customer":
                     new FormMenuCustomer().setVisible(true);
+                    dispose();
                     break;
                 default:
                     JOptionPane.showMessageDialog(this, "Username atau password salah!", "Peringatan", JOptionPane.ERROR_MESSAGE);
