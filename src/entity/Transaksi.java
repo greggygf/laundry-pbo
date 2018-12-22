@@ -1,9 +1,12 @@
 package entity;
 
+import java.sql.Date;
+
 public class Transaksi 
 {
     private int id_transaksi, id_tarif, berat,total;
-    private String nama, tgl, nama_jenis_laundry, nama_jenis_pakaian;
+    private String nama, nama_jenis_laundry, nama_jenis_pakaian;
+    private Date tgl;
 
     public int getId_transaksi() 
     {
@@ -75,12 +78,12 @@ public class Transaksi
         this.nama_jenis_pakaian = nama_jenis_pakaian;
     }
 
-    public String getTgl() 
+    public Date getTgl() 
     {
         return tgl;
     }
 
-    public void setTgl(String tgl) 
+    public void setTgl(Date tgl) 
     {
         this.tgl = tgl;
     }
