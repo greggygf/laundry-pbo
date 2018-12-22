@@ -181,20 +181,20 @@ public class FormLogin extends javax.swing.JFrame {
 
         u.setUsername(usernameText.getText());
         u.setPassword(passwordText.getText());
-
+        
+        dispose();
         try
         {
-            if(ud.cekUser(u).equals("Admin"))
-            {
-                new FormMenuCustomer().setVisible(true);
-            }
-            else if(ud.cekUser(u).equals("Customer"))
-            {
-                new FormMenuCustomer().setVisible(true);
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(this, "Username atau password salah!", "Peringatan", JOptionPane.ERROR_MESSAGE);
+            switch (ud.cekUser(u)) {
+                case "Admin":
+                    new FormMenuAdmin().setVisible(true);
+                    break;
+                case "Customer":
+                    new FormMenuCustomer().setVisible(true);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(this, "Username atau password salah!", "Peringatan", JOptionPane.ERROR_MESSAGE);
+                    break;
             }
         }
         catch (SQLException ex)
