@@ -10,13 +10,11 @@ public class JenisLaundry
         
     }
     
-    public int getId_jenis_laundry() 
-    {
+    public int getId_jenis_laundry() {
         return id_jenis_laundry;
     }
 
-    public void setId_jenis_laundry(int id_jenis_laundry) 
-    {
+    public void setId_jenis_laundry(int id_jenis_laundry) {
         this.id_jenis_laundry = id_jenis_laundry;
     }
 
@@ -29,6 +27,4 @@ public class JenisLaundry
     {
         this.nama_jenis_laundry = nama_jenis_laundry;
     }
-    
-    
 }
