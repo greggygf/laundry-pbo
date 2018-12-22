@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import lib.ManajerKoneksi;
 
 public class JenisPakaianDao 
@@ -43,5 +44,48 @@ public class JenisPakaianDao
         Statement s = this.koneksi.createStatement();
 
         s.executeUpdate(sql);
+    }
+    
+    public ArrayList<JenisPakaian> ambilSemuaData() throws SQLException
+    {
+        ArrayList<JenisPakaian> semuanya = this.selectWhere(null);
+        
+        return semuanya;
+    }
+    
+    private ArrayList<JenisPakaian> selectWhere(String where) throws SQLException
+    {
+        String sql = "SELECT * FROM jenis_pakaian";
+        
+        if(where != null)
+            sql += ("" + where);
+        
+        try
+        {
+            // Menjalankan SQL
+            Statement s = this.koneksi.createStatement();
+        
+            ResultSet hasil = s.executeQuery(sql);
+        
+            // Siapkan array kosong untuk menyimpan mahasiswa dari ResultSet
+            ArrayList<JenisPakaian> jpTerpilih = new ArrayList<>();
+
+            while(hasil.next())
+            {
+                JenisPakaian jp = new JenisPakaian();
+                jp.setId_jenis_pakaian(hasil.getInt("id_jenis_pakaian"));
+                jp.setNama_jenis_pakaian(hasil.getString("nama_jenis_pakaian"));
+
+                // Memasukkan objek m kedalam array list
+                jpTerpilih.add(jp);
+            }
+            
+            return jpTerpilih;
+        }
+        catch(SQLException ex)
+        {
+            System.out.println("Select where error : " + ex.getMessage());
+            return null;
+        }
     }
 }
