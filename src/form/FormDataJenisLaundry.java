@@ -1,7 +1,7 @@
 package form;
 
-import dao.CustomerDao;
-import entity.Customer;
+import dao.JenisLaundryDao;
+import entity.JenisLaundry;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -11,45 +11,43 @@ import lib.ManajerKoneksi;
 
 public class FormDataJenisLaundry extends javax.swing.JFrame 
 {
-    private DefaultTableModel tableModelCustomer;
+    private DefaultTableModel tableModelJenisLaundry;
     
     public FormDataJenisLaundry() {
         initComponents();
         
         // Membuat Table Model
-        String[] daftarNamaKolom = new String[]{"ID Customer", "Nama", "Alamat", "No Telepon"};
+        String[] daftarNamaKolom = new String[]{"ID Jenis Laundry", "Nama Jenis Laundry"};
         int jmlhBarisAwal = 0;
-        this.tableModelCustomer = new DefaultTableModel(daftarNamaKolom, jmlhBarisAwal);
+        this.tableModelJenisLaundry = new DefaultTableModel(daftarNamaKolom, jmlhBarisAwal);
         
-        this.tabelCustomer.setModel(this.tableModelCustomer);
+        this.tabelJenisLaundry.setModel(this.tableModelJenisLaundry);
         
         ManajerKoneksi.getKoneksi();
-        this.tableModelCustomer.setRowCount(0);
+        this.tableModelJenisLaundry.setRowCount(0);
         
-        CustomerDao cd = new CustomerDao();
+        JenisLaundryDao jld = new JenisLaundryDao();
         
-        ArrayList<Customer> semuaCustomer = null;
+        ArrayList<JenisLaundry> semuaJenisLaundry = null;
         
         try 
         {
-            semuaCustomer = cd.ambilSemuaData();
+            semuaJenisLaundry = jld.ambilSemuaData();
         } 
         catch (SQLException ex) 
         {
             Logger.getLogger(FormDataJenisLaundry.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        for(Customer c : semuaCustomer)
+        for(JenisLaundry jl : semuaJenisLaundry)
         {
             Object[] baris = new Object[]
             {
-                c.getId_customer(),
-                c.getNama(),
-                c.getAlamat(),
-                c.getNoTelp()
+                jl.getId_jenis_laundry(),
+                jl.getNama_jenis_laundry()
             };
             
-            this.tableModelCustomer.addRow(baris);
+            this.tableModelJenisLaundry.addRow(baris);
         }
     }
 
@@ -63,9 +61,8 @@ public class FormDataJenisLaundry extends javax.swing.JFrame
         jPanel2 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelCustomer = new javax.swing.JTable();
+        tabelJenisLaundry = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,7 +87,7 @@ public class FormDataJenisLaundry extends javax.swing.JFrame
             }
         });
 
-        tabelCustomer.setModel(new javax.swing.table.DefaultTableModel(
+        tabelJenisLaundry.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -101,7 +98,7 @@ public class FormDataJenisLaundry extends javax.swing.JFrame
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tabelCustomer);
+        jScrollPane1.setViewportView(tabelJenisLaundry);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -115,7 +112,7 @@ public class FormDataJenisLaundry extends javax.swing.JFrame
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(381, 381, 381)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,10 +124,8 @@ public class FormDataJenisLaundry extends javax.swing.JFrame
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/addAccount/icons8-add-user-female-64.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-washing-machine-64.png"))); // NOI18N
         jLabel4.setText("jLabel4");
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/addAccount/icons8-add-user-male-64.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -141,9 +136,7 @@ public class FormDataJenisLaundry extends javax.swing.JFrame
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 502, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -160,9 +153,7 @@ public class FormDataJenisLaundry extends javax.swing.JFrame
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3))
+                        .addComponent(jLabel4)
                         .addGap(18, 18, 18)))
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(233, 233, 233))
@@ -226,11 +217,10 @@ public class FormDataJenisLaundry extends javax.swing.JFrame
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabelCustomer;
+    private javax.swing.JTable tabelJenisLaundry;
     // End of variables declaration//GEN-END:variables
 }
