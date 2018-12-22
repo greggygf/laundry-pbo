@@ -127,10 +127,10 @@ public class FormDataCustomer extends javax.swing.JFrame
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/addAccount/icons8-add-user-female-64.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-add-user-female-64.png"))); // NOI18N
         jLabel4.setText("jLabel4");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/addAccount/icons8-add-user-male-64.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-add-user-male-64.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

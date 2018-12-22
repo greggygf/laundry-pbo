@@ -56,9 +56,9 @@ public class FormMenuAdmin extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/addAccount/icons8-add-user-male-64.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-add-user-male-64.png"))); // NOI18N
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/addAccount/icons8-add-user-female-64.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-add-user-female-64.png"))); // NOI18N
         jLabel4.setText("jLabel4");
 
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
