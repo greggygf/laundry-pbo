@@ -7,42 +7,38 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import lib.ManajerKoneksi;
 
-public class JenisLaundryDao 
-{
+public class JenisLaundryDao {
+
     private final Connection koneksi;
-    
-    public JenisLaundryDao() 
-    {
+
+    public JenisLaundryDao() {
         this.koneksi = ManajerKoneksi.getKoneksi();
     }
-    
-    public int countID() throws SQLException
-    {
-        String sql = "select count(id_jenis_laundry) as jumlah from jenis_laundry";
-        
+
+    public int countID() throws SQLException {
+        String sql = "select * from jenis_laundry";
+
         Statement s = this.koneksi.createStatement();
-        
+
         ResultSet hasil = s.executeQuery(sql);
-        
+
         int rowCount = 1;
-        
-        while(hasil.next())
-        {
+
+        while (hasil.next()) {
             rowCount++;
         }
-        
+
         return rowCount;
     }
-    
-    public void insert(JenisLaundry jl) throws SQLException
-    {
-        int id_jenis_laundry = countID();
+
+    public void insert(JenisLaundry jl) throws SQLException {
+        int id_jenis_laundry = this.countID();
         String nama_jenis_laundry = jl.getNama_jenis_laundry();
-        
-        String sql = "INSERT INTO jenis_laundry VALUES ('" + id_jenis_laundry + "','" + nama_jenis_laundry + ",0')";
-        
+
+        String sql = "INSERT INTO jenis_laundry VALUES (" + id_jenis_laundry + ",'" + nama_jenis_laundry + "',0)";
+
         Statement s = this.koneksi.createStatement();
-        
+
         s.executeUpdate(sql);
     }
 }
