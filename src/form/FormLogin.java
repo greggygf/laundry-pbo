@@ -186,7 +186,7 @@ public class FormLogin extends javax.swing.JFrame {
         {
             if(ud.cekUser(u).equals("Admin"))
             {
-                new FormMenuAdmin().setVisible(true);
+                new FormMenuCustomer().setVisible(true);
             }
             else if(ud.cekUser(u).equals("Customer"))
             {
