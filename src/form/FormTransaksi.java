@@ -1,15 +1,21 @@
 package form;
 
-import dao.CustomerDao;
-import entity.Customer;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
+import dao.TransaksiDao;
+import entity.Transaksi;
 import lib.ManajerKoneksi;
 
 public class FormTransaksi extends javax.swing.JFrame 
 {
     public FormTransaksi() {
         initComponents();
+        
+        CButton.setActionCommand("1");
+        CKButton.setActionCommand("2");
+        CKSButton.setActionCommand("3");
+        
+        BajuButton.setActionCommand("1");
+        CelanaButton.setActionCommand("2");
+        JaketButton.setActionCommand("3");
     }
 
     @SuppressWarnings("unchecked")
@@ -39,13 +45,13 @@ public class FormTransaksi extends javax.swing.JFrame
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        CButton2 = new javax.swing.JRadioButton();
+        BajuButton = new javax.swing.JRadioButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        CKButton2 = new javax.swing.JRadioButton();
+        CelanaButton = new javax.swing.JRadioButton();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        CKSButton2 = new javax.swing.JRadioButton();
+        JaketButton = new javax.swing.JRadioButton();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -158,11 +164,11 @@ public class FormTransaksi extends javax.swing.JFrame
         jLabel14.setForeground(new java.awt.Color(3, 14, 62));
         jLabel14.setText("Jenis Pakaian");
 
-        CButton2.setBackground(new java.awt.Color(204, 204, 204));
-        buttonGroup1.add(CButton2);
-        CButton2.addActionListener(new java.awt.event.ActionListener() {
+        BajuButton.setBackground(new java.awt.Color(204, 204, 204));
+        buttonGroup1.add(BajuButton);
+        BajuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CButton2ActionPerformed(evt);
+                BajuButtonActionPerformed(evt);
             }
         });
 
@@ -170,10 +176,10 @@ public class FormTransaksi extends javax.swing.JFrame
 
         jLabel16.setFont(new java.awt.Font("Exo", 0, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(3, 14, 62));
-        jLabel16.setText("Kaos");
+        jLabel16.setText("Baju");
 
-        CKButton2.setBackground(new java.awt.Color(204, 204, 204));
-        buttonGroup1.add(CKButton2);
+        CelanaButton.setBackground(new java.awt.Color(204, 204, 204));
+        buttonGroup1.add(CelanaButton);
 
         jLabel17.setFont(new java.awt.Font("Exo", 0, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(3, 14, 62));
@@ -181,8 +187,8 @@ public class FormTransaksi extends javax.swing.JFrame
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-jeans-100.png"))); // NOI18N
 
-        CKSButton2.setBackground(new java.awt.Color(204, 204, 204));
-        buttonGroup1.add(CKSButton2);
+        JaketButton.setBackground(new java.awt.Color(204, 204, 204));
+        buttonGroup1.add(JaketButton);
 
         jLabel19.setFont(new java.awt.Font("Exo", 0, 18)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(3, 14, 62));
@@ -215,15 +221,15 @@ public class FormTransaksi extends javax.swing.JFrame
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(63, 63, 63)
+                                        .addComponent(jLabel11))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(CButton)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel10)
                                         .addGap(18, 18, 18)
-                                        .addComponent(CKButton))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(63, 63, 63)
-                                        .addComponent(jLabel11)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(CKButton)))
+                                .addGap(8, 8, 8)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel12)
                                     .addComponent(jLabel5))
@@ -240,11 +246,11 @@ public class FormTransaksi extends javax.swing.JFrame
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addComponent(CButton2)
+                                            .addComponent(BajuButton)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(jLabel15)
                                             .addGap(18, 18, 18)
-                                            .addComponent(CKButton2))
+                                            .addComponent(CelanaButton))
                                         .addGroup(jPanel2Layout.createSequentialGroup()
                                             .addGap(63, 63, 63)
                                             .addComponent(jLabel16)))
@@ -253,7 +259,7 @@ public class FormTransaksi extends javax.swing.JFrame
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(jLabel18)
                                             .addGap(33, 33, 33)
-                                            .addComponent(CKSButton2)
+                                            .addComponent(JaketButton)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                                         .addGroup(jPanel2Layout.createSequentialGroup()
                                             .addGap(31, 31, 31)
@@ -276,22 +282,24 @@ public class FormTransaksi extends javax.swing.JFrame
                 .addComponent(namaText, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(CKButton))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(102, 102, 102)
                         .addComponent(CKSButton))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(53, 53, 53)
-                                .addComponent(CButton))
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel10))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(53, 53, 53)
+                                        .addComponent(CButton))
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel10)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(60, 60, 60)
+                                .addComponent(CKButton)))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
@@ -303,16 +311,16 @@ public class FormTransaksi extends javax.swing.JFrame
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
-                        .addComponent(CButton2))
+                        .addComponent(BajuButton))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(CKButton2))
+                        .addComponent(CelanaButton))
                     .addComponent(jLabel18)
                     .addComponent(jLabel20)
                     .addComponent(jLabel15)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
-                        .addComponent(CKSButton2)))
+                        .addComponent(JaketButton)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
@@ -391,9 +399,10 @@ public class FormTransaksi extends javax.swing.JFrame
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         ManajerKoneksi.getKoneksi();
         
-//        Customer c = new Customer();
-//        
-//        CustomerDao cd = new CustomerDao();
+        Transaksi t = new Transaksi();
+        
+        TransaksiDao td = new TransaksiDao();
+        
 //        
 //        c.setNama(namaText.getText());
 //        c.setAlamat(alamatText.getText());
@@ -422,9 +431,9 @@ public class FormTransaksi extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_CButtonActionPerformed
 
-    private void CButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CButton2ActionPerformed
+    private void BajuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BajuButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CButton2ActionPerformed
+    }//GEN-LAST:event_BajuButtonActionPerformed
 
     public static void main(String args[]) 
     {
@@ -459,12 +468,12 @@ public class FormTransaksi extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton BajuButton;
     private javax.swing.JRadioButton CButton;
-    private javax.swing.JRadioButton CButton2;
     private javax.swing.JRadioButton CKButton;
-    private javax.swing.JRadioButton CKButton2;
     private javax.swing.JRadioButton CKSButton;
-    private javax.swing.JRadioButton CKSButton2;
+    private javax.swing.JRadioButton CelanaButton;
+    private javax.swing.JRadioButton JaketButton;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup grupJenisPakaian;
     private javax.swing.JButton jButton3;
