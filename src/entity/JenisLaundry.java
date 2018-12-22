@@ -5,6 +5,11 @@ public class JenisLaundry
     private int id_jenis_laundry;
     private String nama_jenis_laundry;
 
+    public JenisLaundry()
+    {
+        
+    }
+    
     public int getId_jenis_laundry() 
     {
         return id_jenis_laundry;
