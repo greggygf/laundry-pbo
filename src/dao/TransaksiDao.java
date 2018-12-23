@@ -2,6 +2,7 @@ package dao;
 
 import entity.Transaksi;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -34,11 +35,12 @@ public class TransaksiDao
         return rowCount;
     }
     
-    public int findTarif(int id_jenis_pakaian, int id_jenis_laundry) throws SQLException
+    public int findTarif(Transaksi t) throws SQLException
     {
-        String sql =    "select * from tarif\n" +
-                        "where id_jenis_pakaian = " + id_jenis_pakaian +
-                        "AND id_jenis_laundry = " + id_jenis_laundry;
+        int id_jenis_pakaian = t.getId_jenis_pakaian();
+        int id_jenis_laundry = t.getId_jenis_laundry();
+        
+        String sql = "select * from tarif where id_jenis_pakaian = " + id_jenis_pakaian + " AND id_jenis_laundry = " + id_jenis_laundry;
         
         Statement s = this.koneksi.createStatement();
 
@@ -47,9 +49,7 @@ public class TransaksiDao
         int idTarif = 0;
         
         while(hasil.next())
-        {
-            Transaksi t = new Transaksi();
-            
+        {            
             t.setId_tarif(hasil.getInt("id_tarif"));
             idTarif = t.getId_tarif();
         }
@@ -57,17 +57,40 @@ public class TransaksiDao
         return idTarif;
     }
     
+    public int findBiaya(Transaksi t) throws SQLException
+    {
+        String sql = "SELECT biaya FROM tarif WHERE id_tarif =" + this.findTarif(t);
+        
+        Statement s = this.koneksi.createStatement();
+
+        ResultSet hasil = s.executeQuery(sql);
+        
+        int biaya = 0;
+        
+        while(hasil.next())
+        {            
+            t.setBiaya(hasil.getInt("biaya"));
+            biaya = t.getBiaya();
+        }
+        
+        return biaya;
+    }
+    
     public void insert(Transaksi t) throws SQLException 
     {
-        int id_transaksi = t.getId_transaksi();
-//        int id_tarif = this.findTarif(t.);
-//        String nama_jenis_pakaian = jp.getNama_jenis_pakaian();
-//
-//        String sql = "INSERT INTO jenis_pakaian VALUES (" + id_jenis_pakaian + ",'" + nama_jenis_pakaian + "',0)";
+        int id_transaksi = this.countID();
+        int id_tarif = this.findTarif(t);
+        String nama = t.getNama();
+        Date tgl = t.getTgl();
+        int berat = t.getBerat();
+        int biaya = this.findBiaya(t);
+        int total = biaya*berat;
+        
+        String sql = "INSERT INTO transaksi VALUES (" + id_transaksi + "," + id_tarif + ",'" + nama + "',now()," + berat + "," + total + ")";
 
-//        Statement s = this.koneksi.createStatement();
-//
-//        s.executeUpdate(sql);
+        Statement s = this.koneksi.createStatement();
+
+        s.executeUpdate(sql);
     }
     
     public ArrayList<Transaksi> ambilSemuaData() throws SQLException
