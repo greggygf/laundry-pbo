@@ -1,7 +1,6 @@
 package form;
 
 import dao.JenisPakaianDao;
-import entity.JenisLaundry;
 import entity.JenisPakaian;
 import java.sql.SQLException;
 import java.util.ArrayList;

@@ -29,7 +29,8 @@ public class JenisLaundryDao implements IJenisLaundry
 
         int rowCount = 1;
 
-        while (hasil.next()) {
+        while (hasil.next()) 
+        {
             rowCount++;
         }
 

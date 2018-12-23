@@ -12,8 +12,10 @@
             <file>file:/home/bluohazard/NetBeansProjects/Laundry-PBO/src/form/FormMenuAdmin.java</file>
             <file>file:/home/bluohazard/NetBeansProjects/Laundry-PBO/src/form/FormDataJenisLaundry.java</file>
             <file>file:/home/bluohazard/NetBeansProjects/Laundry-PBO/src/form/FormDataCustomer.java</file>
+            <file>file:/home/bluohazard/NetBeansProjects/Laundry-PBO/src/interfacee/IJenisPakaian.java</file>
             <file>file:/home/bluohazard/NetBeansProjects/Laundry-PBO/src/dao/UserDao.java</file>
             <file>file:/home/bluohazard/NetBeansProjects/Laundry-PBO/src/form/FormAddCustomer.java</file>
+            <file>file:/home/bluohazard/NetBeansProjects/Laundry-PBO/src/interfacee/ITransaksi.java</file>
             <file>file:/home/bluohazard/NetBeansProjects/Laundry-PBO/src/form/FormAddJenisLaundry.java</file>
             <file>file:/home/bluohazard/NetBeansProjects/Laundry-PBO/src/form/FormLaundryCustomer.java</file>
             <file>file:/home/bluohazard/NetBeansProjects/Laundry-PBO/src/form/FormDataJenisPakaian.java</file>
@@ -26,6 +28,8 @@
             <file>file:/home/bluohazard/NetBeansProjects/Laundry-PBO/src/icon/icons8-add-user-male-64.png</file>
             <file>file:/home/bluohazard/NetBeansProjects/Laundry-PBO/src/interfacee/IUser.java</file>
             <file>file:/home/bluohazard/NetBeansProjects/Laundry-PBO/src/form/FormLogin.java</file>
+            <file>file:/home/bluohazard/NetBeansProjects/Laundry-PBO/src/interfacee/ICustomer.java</file>
+            <file>file:/home/bluohazard/NetBeansProjects/Laundry-PBO/src/interfacee/IJenisLaundry.java</file>
             <file>file:/home/bluohazard/NetBeansProjects/Laundry-PBO/src/entity/User.java</file>
             <file>file:/home/bluohazard/NetBeansProjects/Laundry-PBO/src/entity/JenisPakaian.java</file>
             <file>file:/home/bluohazard/NetBeansProjects/Laundry-PBO/src/form/FormRiwayatTransaksi.java</file>

@@ -29,7 +29,8 @@ public class JenisPakaianDao implements IJenisPakaian
 
         int rowCount = 1;
 
-        while (hasil.next()) {
+        while (hasil.next()) 
+        {
             rowCount++;
         }
 

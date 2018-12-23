@@ -13,11 +13,13 @@ public class Transaksi
         
     }
 
-    public int getBiaya() {
+    public int getBiaya() 
+    {
         return biaya;
     }
 
-    public void setBiaya(int biaya) {
+    public void setBiaya(int biaya) 
+    {
         this.biaya = biaya;
     }
     
@@ -26,19 +28,23 @@ public class Transaksi
         return id_transaksi;
     }
 
-    public int getId_jenis_pakaian() {
+    public int getId_jenis_pakaian() 
+    {
         return id_jenis_pakaian;
     }
 
-    public void setId_jenis_pakaian(int id_jenis_pakaian) {
+    public void setId_jenis_pakaian(int id_jenis_pakaian) 
+    {
         this.id_jenis_pakaian = id_jenis_pakaian;
     }
 
-    public int getId_jenis_laundry() {
+    public int getId_jenis_laundry() 
+    {
         return id_jenis_laundry;
     }
 
-    public void setId_jenis_laundry(int id_jenis_laundry) {
+    public void setId_jenis_laundry(int id_jenis_laundry) 
+    {
         this.id_jenis_laundry = id_jenis_laundry;
     }
 
