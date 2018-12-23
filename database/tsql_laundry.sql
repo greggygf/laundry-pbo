@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 14, 2018 at 12:31 PM
+-- Generation Time: Dec 23, 2018 at 03:06 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.1.21
 
@@ -44,7 +44,9 @@ INSERT INTO `customer` (`id_customer`, `nama`, `alamat`, `no_telp`) VALUES
 (2, 'Reza Ariestya P', 'Kepanjen', '0811'),
 (3, 'Abdallah Darussalam C', 'Muharto', '0871'),
 (4, 'Ilham Nuswantoro A', 'Pasuruan', '0819'),
-(5, 'Greggy Gianini F', 'Malang', '087759659653');
+(5, 'Greggy Gianini F', 'Malang', '087759659653'),
+(6, 'Septian Caesar F.', 'Tulungagung', 'null'),
+(7, 'Sulthan Rafif', 'Malang', '087326478364');
 
 -- --------------------------------------------------------
 
@@ -86,8 +88,7 @@ CREATE TABLE `jenis_pakaian` (
 INSERT INTO `jenis_pakaian` (`id_jenis_pakaian`, `nama_jenis_pakaian`, `deleted`) VALUES
 (1, 'Baju', 0),
 (2, 'Celana', 0),
-(3, 'Jaket', 0),
-(4, 'Celana Jeans', 0);
+(3, 'Jaket', 0);
 
 -- --------------------------------------------------------
 
@@ -109,7 +110,7 @@ CREATE TABLE `tarif` (
 INSERT INTO `tarif` (`id_tarif`, `id_jenis_pakaian`, `id_jenis_laundry`, `biaya`) VALUES
 (1, 1, 1, 2000),
 (2, 2, 1, 2500),
-(3, 4, 1, 4000),
+(3, 3, 2, 4000),
 (4, 3, 1, 5000);
 
 -- --------------------------------------------------------
@@ -120,9 +121,10 @@ INSERT INTO `tarif` (`id_tarif`, `id_jenis_pakaian`, `id_jenis_laundry`, `biaya`
 
 CREATE TABLE `transaksi` (
   `id_transaksi` int(11) NOT NULL,
-  `id_customer` int(11) NOT NULL,
   `id_tarif` int(11) NOT NULL,
-  `tgl_ambil` date NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `tgl` datetime NOT NULL,
+  `berat` int(11) NOT NULL,
   `total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -130,9 +132,10 @@ CREATE TABLE `transaksi` (
 -- Dumping data for table `transaksi`
 --
 
-INSERT INTO `transaksi` (`id_transaksi`, `id_customer`, `id_tarif`, `tgl_ambil`, `total`) VALUES
-(1, 2, 3, '2018-12-06', 12000),
-(2, 1, 4, '2018-12-05', 25000);
+INSERT INTO `transaksi` (`id_transaksi`, `id_tarif`, `nama`, `tgl`, `berat`, `total`) VALUES
+(1, 3, 'Greggy', '2018-12-06 00:00:00', 3, 12000),
+(2, 4, 'Ilham', '2018-12-05 00:00:00', 4, 25000),
+(3, 2, 'a', '2018-12-23 19:05:24', 3, 7500);
 
 -- --------------------------------------------------------
 
@@ -143,6 +146,7 @@ INSERT INTO `transaksi` (`id_transaksi`, `id_customer`, `id_tarif`, `tgl_ambil`,
 CREATE TABLE `user` (
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
+  `jenis_user` enum('Admin','Customer') NOT NULL,
   `id_customer` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -150,8 +154,9 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`username`, `password`, `id_customer`) VALUES
-('greg', 'greg', 5);
+INSERT INTO `user` (`username`, `password`, `jenis_user`, `id_customer`) VALUES
+('greg', 'greg', 'Admin', 5),
+('iwonk', 'iwonk', 'Customer', 4);
 
 --
 -- Indexes for dumped tables
@@ -188,7 +193,6 @@ ALTER TABLE `tarif`
 --
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`id_transaksi`),
-  ADD KEY `FK_transaksi_customer` (`id_customer`),
   ADD KEY `FK_transaksi_tarif` (`id_tarif`);
 
 --
@@ -212,7 +216,6 @@ ALTER TABLE `tarif`
 -- Constraints for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  ADD CONSTRAINT `FK_transaksi_customer` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id_customer`),
   ADD CONSTRAINT `FK_transaksi_tarif` FOREIGN KEY (`id_tarif`) REFERENCES `tarif` (`id_tarif`);
 
 --
