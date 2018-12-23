@@ -209,7 +209,7 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <Component id="telpText" alignment="0" min="-2" pref="412" max="-2" attributes="0"/>
+                                      <Component id="beratText" alignment="0" min="-2" pref="412" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="0" pref="131" max="32767" attributes="0"/>
@@ -288,7 +288,7 @@
                       <EmptySpace pref="39" max="32767" attributes="0"/>
                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="telpText" min="-2" pref="64" max="-2" attributes="0"/>
+                      <Component id="beratText" min="-2" pref="64" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButton4" alignment="3" min="-2" pref="52" max="-2" attributes="0"/>
@@ -367,7 +367,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="telpText">
+            <Component class="javax.swing.JTextField" name="beratText">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -396,7 +396,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="telpTextActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="beratTextActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="namaText">
@@ -535,7 +535,7 @@
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="buttonGroup1"/>
+                  <ComponentRef name="grupJenisPakaian"/>
                 </Property>
               </Properties>
               <Events>
@@ -566,7 +566,7 @@
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="buttonGroup1"/>
+                  <ComponentRef name="grupJenisPakaian"/>
                 </Property>
               </Properties>
             </Component>
@@ -594,7 +594,7 @@
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="buttonGroup1"/>
+                  <ComponentRef name="grupJenisPakaian"/>
                 </Property>
               </Properties>
             </Component>

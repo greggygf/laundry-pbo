@@ -2,6 +2,10 @@ package form;
 
 import dao.TransaksiDao;
 import entity.Transaksi;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import lib.ManajerKoneksi;
 
 public class FormTransaksi extends javax.swing.JFrame 
@@ -33,7 +37,7 @@ public class FormTransaksi extends javax.swing.JFrame
         jLabel9 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        telpText = new javax.swing.JTextField();
+        beratText = new javax.swing.JTextField();
         namaText = new javax.swing.JTextField();
         CButton = new javax.swing.JRadioButton();
         CKButton = new javax.swing.JRadioButton();
@@ -102,16 +106,16 @@ public class FormTransaksi extends javax.swing.JFrame
             }
         });
 
-        telpText.setBackground(new java.awt.Color(204, 204, 204));
-        telpText.setFont(new java.awt.Font("Exo", 0, 24)); // NOI18N
-        telpText.setForeground(new java.awt.Color(3, 14, 62));
-        telpText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(3, 14, 62)));
-        telpText.setCaretColor(new java.awt.Color(3, 14, 62));
-        telpText.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        telpText.setDisabledTextColor(new java.awt.Color(3, 14, 62));
-        telpText.addActionListener(new java.awt.event.ActionListener() {
+        beratText.setBackground(new java.awt.Color(204, 204, 204));
+        beratText.setFont(new java.awt.Font("Exo", 0, 24)); // NOI18N
+        beratText.setForeground(new java.awt.Color(3, 14, 62));
+        beratText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(3, 14, 62)));
+        beratText.setCaretColor(new java.awt.Color(3, 14, 62));
+        beratText.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        beratText.setDisabledTextColor(new java.awt.Color(3, 14, 62));
+        beratText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                telpTextActionPerformed(evt);
+                beratTextActionPerformed(evt);
             }
         });
 
@@ -165,7 +169,7 @@ public class FormTransaksi extends javax.swing.JFrame
         jLabel14.setText("Jenis Pakaian");
 
         BajuButton.setBackground(new java.awt.Color(204, 204, 204));
-        buttonGroup1.add(BajuButton);
+        grupJenisPakaian.add(BajuButton);
         BajuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BajuButtonActionPerformed(evt);
@@ -179,7 +183,7 @@ public class FormTransaksi extends javax.swing.JFrame
         jLabel16.setText("Baju");
 
         CelanaButton.setBackground(new java.awt.Color(204, 204, 204));
-        buttonGroup1.add(CelanaButton);
+        grupJenisPakaian.add(CelanaButton);
 
         jLabel17.setFont(new java.awt.Font("Exo", 0, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(3, 14, 62));
@@ -188,7 +192,7 @@ public class FormTransaksi extends javax.swing.JFrame
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-jeans-100.png"))); // NOI18N
 
         JaketButton.setBackground(new java.awt.Color(204, 204, 204));
-        buttonGroup1.add(JaketButton);
+        grupJenisPakaian.add(JaketButton);
 
         jLabel19.setFont(new java.awt.Font("Exo", 0, 18)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(3, 14, 62));
@@ -270,7 +274,7 @@ public class FormTransaksi extends javax.swing.JFrame
                                         .addGroup(jPanel2Layout.createSequentialGroup()
                                             .addGap(28, 28, 28)
                                             .addComponent(jLabel19))))
-                                .addComponent(telpText, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(beratText, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 131, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -329,7 +333,7 @@ public class FormTransaksi extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
-                .addComponent(telpText, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(beratText, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -403,25 +407,28 @@ public class FormTransaksi extends javax.swing.JFrame
         
         TransaksiDao td = new TransaksiDao();
         
-//        
-//        c.setNama(namaText.getText());
-//        c.setAlamat(alamatText.getText());
-//        c.setNoTelp(telpText.getText());
-//        
-//        try 
-//        {
-//            cd.insert(c);
-//            JOptionPane.showMessageDialog(this, "Input Berhasil!", "Message", JOptionPane.INFORMATION_MESSAGE);
-//        } 
-//        catch (SQLException ex) 
-//        {
-//            JOptionPane.showMessageDialog(this, "input tidak bisa dilakukan!", "Peringatan", JOptionPane.ERROR_MESSAGE);
-//        }
+        t.setNama(namaText.getText());
+        t.setId_jenis_laundry(Integer.parseInt(buttonGroup1.getSelection().getActionCommand()));
+        t.setId_jenis_pakaian(Integer.parseInt(grupJenisPakaian.getSelection().getActionCommand()));
+        t.setBerat(Integer.parseInt(beratText.getText()));
+        
+        try 
+        {
+            td.findTarif(t);
+            td.findBiaya(t);
+            td.insert(t);
+            JOptionPane.showMessageDialog(this, "Input Berhasil!", "Message", JOptionPane.INFORMATION_MESSAGE);
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(FormTransaksi.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "input tidak bisa dilakukan!", "Peringatan", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void telpTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telpTextActionPerformed
+    private void beratTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_beratTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_telpTextActionPerformed
+    }//GEN-LAST:event_beratTextActionPerformed
 
     private void namaTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaTextActionPerformed
         // TODO add your handling code here:
@@ -474,6 +481,7 @@ public class FormTransaksi extends javax.swing.JFrame
     private javax.swing.JRadioButton CKSButton;
     private javax.swing.JRadioButton CelanaButton;
     private javax.swing.JRadioButton JaketButton;
+    private javax.swing.JTextField beratText;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup grupJenisPakaian;
     private javax.swing.JButton jButton3;
@@ -501,6 +509,5 @@ public class FormTransaksi extends javax.swing.JFrame
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField namaText;
-    private javax.swing.JTextField telpText;
     // End of variables declaration//GEN-END:variables
 }
