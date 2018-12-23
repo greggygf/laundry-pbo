@@ -1,6 +1,7 @@
 package dao;
 
 import entity.Transaksi;
+import interfacee.ITransaksi;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -9,7 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import lib.ManajerKoneksi;
 
-public class TransaksiDao 
+public class TransaksiDao implements ITransaksi
 {
     private final Connection koneksi;
 
@@ -18,6 +19,7 @@ public class TransaksiDao
         this.koneksi = ManajerKoneksi.getKoneksi();
     }
     
+    @Override
     public int countID() throws SQLException 
     {
         String sql = "select * from transaksi";
@@ -35,6 +37,7 @@ public class TransaksiDao
         return rowCount;
     }
     
+    @Override
     public int findTarif(Transaksi t) throws SQLException
     {
         int id_jenis_pakaian = t.getId_jenis_pakaian();
@@ -57,6 +60,7 @@ public class TransaksiDao
         return idTarif;
     }
     
+    @Override
     public int findBiaya(Transaksi t) throws SQLException
     {
         String sql = "SELECT biaya FROM tarif WHERE id_tarif =" + this.findTarif(t);
@@ -76,6 +80,7 @@ public class TransaksiDao
         return biaya;
     }
     
+    @Override
     public void insert(Transaksi t) throws SQLException 
     {
         int id_transaksi = this.countID();
@@ -93,6 +98,7 @@ public class TransaksiDao
         s.executeUpdate(sql);
     }
     
+    @Override
     public ArrayList<Transaksi> ambilSemuaData() throws SQLException
     {
         ArrayList<Transaksi> semuanya = this.selectWhere(null);
@@ -100,7 +106,14 @@ public class TransaksiDao
         return semuanya;
     }
     
-    private ArrayList<Transaksi> selectWhere(String where) throws SQLException
+    /**
+     *
+     * @param where
+     * @return
+     * @throws SQLException
+     */
+    @Override
+    public ArrayList<Transaksi> selectWhere(String where) throws SQLException
     {
         String sql =    "SELECT t.id_transaksi,jl.nama_jenis_laundry,jp.nama_jenis_pakaian,t.nama,t.tgl,t.berat,t.total FROM transaksi t,tarif tr,jenis_laundry jl,jenis_pakaian jp\n" +
                         "WHERE t.id_tarif = tr.id_tarif AND\n" +

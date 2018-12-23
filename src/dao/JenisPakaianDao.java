@@ -1,6 +1,7 @@
 package dao;
 
 import entity.JenisPakaian;
+import interfacee.IJenisPakaian;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import lib.ManajerKoneksi;
 
-public class JenisPakaianDao 
+public class JenisPakaianDao implements IJenisPakaian
 {
     private final Connection koneksi;
 
@@ -17,6 +18,7 @@ public class JenisPakaianDao
         this.koneksi = ManajerKoneksi.getKoneksi();
     }
 
+    @Override
     public int countID() throws SQLException 
     {
         String sql = "select * from jenis_pakaian";
@@ -34,6 +36,7 @@ public class JenisPakaianDao
         return rowCount;
     }
 
+    @Override
     public void insert(JenisPakaian jp) throws SQLException 
     {
         int id_jenis_pakaian = this.countID();
@@ -46,6 +49,7 @@ public class JenisPakaianDao
         s.executeUpdate(sql);
     }
     
+    @Override
     public ArrayList<JenisPakaian> ambilSemuaData() throws SQLException
     {
         ArrayList<JenisPakaian> semuanya = this.selectWhere(null);
@@ -53,7 +57,14 @@ public class JenisPakaianDao
         return semuanya;
     }
     
-    private ArrayList<JenisPakaian> selectWhere(String where) throws SQLException
+    /**
+     *
+     * @param where
+     * @return
+     * @throws SQLException
+     */
+    @Override
+    public ArrayList<JenisPakaian> selectWhere(String where) throws SQLException
     {
         String sql = "SELECT * FROM jenis_pakaian";
         
