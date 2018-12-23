@@ -1,6 +1,7 @@
 package dao;
 
 import entity.Customer;
+import interfacee.ICustomer;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import lib.ManajerKoneksi;
 
-public class CustomerDao 
+public class CustomerDao implements ICustomer
 {
     private final Connection koneksi;
 
@@ -17,6 +18,7 @@ public class CustomerDao
         this.koneksi = ManajerKoneksi.getKoneksi();
     }
     
+    @Override
     public int countID() throws SQLException 
     {
         String sql = "select * from customer";
@@ -34,6 +36,7 @@ public class CustomerDao
         return rowCount;
     }
     
+    @Override
     public void insert(Customer c) throws SQLException 
     {
         int id_customer = this.countID();
@@ -48,6 +51,7 @@ public class CustomerDao
         s.executeUpdate(sql);
     }
     
+    @Override
     public ArrayList<Customer> ambilSemuaData() throws SQLException
     {
         ArrayList<Customer> semuanya = this.selectWhere(null);
@@ -55,7 +59,8 @@ public class CustomerDao
         return semuanya;
     }
     
-    private ArrayList<Customer> selectWhere(String where) throws SQLException
+    @Override
+    public ArrayList<Customer> selectWhere(String where) throws SQLException
     {
         String sql = "SELECT * FROM customer";
         
