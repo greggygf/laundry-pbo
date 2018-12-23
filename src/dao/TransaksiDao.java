@@ -141,6 +141,8 @@ public class TransaksiDao implements ITransaksi
                 t.setNama_jenis_pakaian(hasil.getString("nama_jenis_pakaian"));
                 t.setNama(hasil.getString("nama"));
                 t.setTgl(hasil.getDate("tgl"));
+                t.setBerat(hasil.getInt("berat"));
+                t.setTotal(hasil.getInt("total"));
 
                 // Memasukkan objek m kedalam array list
                 transaksiTerpilih.add(t);
